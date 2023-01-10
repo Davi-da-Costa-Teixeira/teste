@@ -1,10 +1,11 @@
-<template lang="pug">
-  tutorial
+<template >
+   <div>Davi</div>
 </template>
 
 <script>
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'IndexPage'
+  name: 'IndexPage',
+  layout: 'default.vue',
 })
