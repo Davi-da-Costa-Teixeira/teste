@@ -1,13 +1,15 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
+  server: {
+    host: '0.0.0.0' // default: localhost
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Frontend',
+    title: 'Metasy',
     htmlAttrs: {
       lang: 'en'
     },
@@ -18,7 +20,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'C:\Users\davi.teixeira\Desktop\projeto_1\Frontend\static\favicon.ico' }
     ]
   },
 
