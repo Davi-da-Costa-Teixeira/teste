@@ -9,16 +9,16 @@
                     <div @click="exibir = !exibir" class="itens-container"><img src="/editar.png" alt="editar"
                             width="22px">
                     </div>
-                    <div @click="Apagar = !Apagar" class="lixeira-container">
+                    <div @click="Apagar = !Apagar; submitdata(meta.ID)" class="lixeira-container">
                         <div class="itens-container"><img src="/lixeira.png" alt="editar" width="24px"></div>
                     </div>
                 </div>
             </div>
             <div v-if="exibir" class="atualizar">
-                <Atualizar @Cancelar="exibir = !exibir" />
+                <Atualizar @Cancelar="exibir = !exibir" data="k" />
             </div>
             <div v-if="Apagar" class="excluir">
-                <Excluir @Cancelar="Apagar = !Apagar" />
+                <Excluir :dados="retirar_dados" @Cancelar="Apagar = !Apagar" />
             </div>
         </div>
     </div>
@@ -32,18 +32,20 @@ export default {
         return {
             exibir: false,
             Apagar: false,
-            metas: {}
+            metas: {},
+            retirar_dados: ''
         }
+    },
+    methods:{
+        submitdata(ID) {
+           this.retirar_dados = ID
+        },
     },
     async fetch() {
         const descricao = await this.$axios.$get('http://localhost:2222/')
         this.metas = descricao
-    },
-    /*methods:{
-        EnviarId: (ID)=>{
-          $nuxt.$emit('PegarId',ID)
-        }
-    }*/
+
+    }
 }
 </script>
 

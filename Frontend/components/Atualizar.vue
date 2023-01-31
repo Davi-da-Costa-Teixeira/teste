@@ -41,7 +41,7 @@ div.atualizar {
     left: 0%;
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(1px);
     z-index: 100;

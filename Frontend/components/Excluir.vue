@@ -1,21 +1,33 @@
 <template>
     <div class="excluir">
         <div class="container-excluir">
-            <form action="#" method="post">
-                <p>Voce quer excluir? <img src="/susto.png" alt="diabinho" width="26px"></p>
+            <div>
+                <p>Voce quer excluir?<img src="/susto.png" alt="diabinho" width="26px"></p>
                 <div class="buttons">
                     <button class="botoes-do-container-Excluir" @click="$emit('Cancelar')">Cancelar</button>
-                    <button type="submit" class="botoes-do-container-Excluir">Excluir</button>
+                    <button @click="$emit('Cancelar'),deletar(),refresh()" class="botoes-do-container-Excluir">Excluir</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     name: 'Excluir',
-    emits: ['Cancelar']
+    emits: ['Cancelar'],
+    props:{
+        dados:{
+            type:Number,
+        }
+    },
+
+    methods:{
+        deletar(){
+            const a = this.$axios.$get('http://localhost:2222/delete/'+this.dados)
+        },
+    }
 }
 </script>
 
@@ -43,7 +55,7 @@ div.container-excluir {
     border-radius: 10px;
 }
 
-form>p {
+div>p {
     margin-left: 10px;
     padding: 15px 15px 0px 15px;
     font-size: 22px;
