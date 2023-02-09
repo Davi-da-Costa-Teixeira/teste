@@ -1,0 +1,20 @@
+{
+  "Adicionar": {
+    "description": "Auto imported from components/Adicionar.vue"
+  },
+  "Atualizar": {
+    "description": "Auto imported from components/Atualizar.vue"
+  },
+  "BotaoAdicionar": {
+    "description": "Auto imported from components/BotaoAdicionar.vue"
+  },
+  "Excluir": {
+    "description": "Auto imported from components/Excluir.vue"
+  },
+  "Lista": {
+    "description": "Auto imported from components/Lista.vue"
+  },
+  "Titulo": {
+    "description": "Auto imported from components/Titulo.vue"
+  }
+}

@@ -1,4 +1,5 @@
 export default {
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
   server: {
@@ -18,9 +19,6 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'C:\Users\davi.teixeira\Desktop\projeto_1\Frontend\static\favicon.ico' }
     ]
   },
 

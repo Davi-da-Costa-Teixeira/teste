@@ -1,7 +1,7 @@
 <template>
     <div>
         <button @click="$emit('Exibir')" class="adicionar">Adicionar nova meta <img src="/diabinho.png" width='30px'
-                alt="diabinho"> <img src="/diabinho.png" width='30px' alt=""></button>
+                alt="diabinho"></button>
     </div>
 </template>
 
@@ -14,7 +14,6 @@ export default {
 
 <style>
 button.adicionar {
-    transition: 0.3s;
     border-radius: 4px;
     position: relative;
     margin-left: 1%;
@@ -52,7 +51,7 @@ button::selection {
 @media (max-width: 600px) {
     button.adicionar {
         transition: 0.3s;
-        border-radius: 4px;
+        border-radius: 2px;
         position: relative;
         margin-left: 1%;
         margin-bottom: 40px;
@@ -69,6 +68,7 @@ button::selection {
     @media (max-width: 480px) {
         button.adicionar {
             margin-top: 20px;
+            border-radius: 2px;
         }
     }
 }
@@ -76,7 +76,7 @@ button::selection {
 @media (max-width: 370px) {
     button.adicionar {
         margin-top: 20px;
-
+        border-radius: 2px;
     }
 }
 </style>

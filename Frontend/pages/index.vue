@@ -7,11 +7,11 @@
     <span class="vienna">
       <img src="/vienna.png" alt="vienna" width="280px">
     </span>
-    <span class="trissue"><img src="/kklklkllkklkllk-removebg-preview.png" alt="Scar-Trissue" width="280px"></span>
+    <span class="trissue"><img src="/Scar-trissue.png" alt="Scar-trissue" width="280px"></span>
     <div class="container">
       <Titulo />
       <BotaoAdicionar @Exibir="mostrar = !mostrar" />
-      <Lista @Cancelar="exibir = !exibir" @Excluir="Apagar = !Apagar" />
+      <Lista />
       <div>
       </div>
     </div>
@@ -117,7 +117,7 @@ div.img-background {
 
   body {
     transition: 0.1s;
-    background-image: url('/Screenshot.png');
+    background-image: url('/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;

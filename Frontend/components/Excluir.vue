@@ -5,7 +5,7 @@
                 <p>Voce quer excluir?<img src="/susto.png" alt="diabinho" width="26px"></p>
                 <div class="buttons">
                     <button class="botoes-do-container-Excluir" @click="$emit('Cancelar')">Cancelar</button>
-                    <button @click="$emit('Cancelar'),deletar(),refresh()" class="botoes-do-container-Excluir">Excluir</button>
+                    <button @click="$emit('Excluir'); deletar()" class="botoes-do-container-Excluir">Excluir</button>
                 </div>
             </div>
         </div>
@@ -16,16 +16,17 @@
 
 export default {
     name: 'Excluir',
-    emits: ['Cancelar'],
-    props:{
-        dados:{
-            type:Number,
+    emits: ['Cancelar', 'Excluir'],
+    props: {
+        dados: {
+            type: Number,
         }
     },
 
-    methods:{
-        deletar(){
-            const a = this.$axios.$get('http://localhost:2222/delete/'+this.dados)
+    methods: {
+        async deletar() {
+            const a = await this.$axios.$get('http://localhost:2222/delete/' + this.dados)
+            this.$nuxt.$emit("refresh")
         },
     }
 }

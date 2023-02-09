@@ -1,14 +1,15 @@
 <template>
     <div class="atualizar">
         <div class="container-atualizar">
-            <form action="#" method="post">
-                <p>Bora editar então <img src="/tranquilo.png" alt="diabinho" width="26px"></p>
-                <textarea name="item-da-lista" id="newMeta" rows="4"></textarea>
+            <div action="#" method="post">
+                <p>Bora la editar <img src="/tranquilo.png" alt="diabinho" width="26px"></p>
+                <textarea name="itemLista" v-model="dataUpdated" id="newMeta" rows="4">{{ dados }}</textarea>
                 <div class="buttons">
                     <button class="botoes-do-container-Atualizar" @click="$emit('Cancelar')">Cancelar</button>
-                    <button class="botoes-do-container-Atualizar">Atualizar</button>
+                    <button @click="$emit('Cancelar'), atualizar()"
+                        class="botoes-do-container-Atualizar">Atualizar</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </template>
@@ -17,11 +18,34 @@
 export default {
     name: 'Atualizar',
     emits: ['Cancelar'],
+    data() {
+        return {
+            dataUpdated: this.dados
+        }
+    },
+    props: {
+        dados: {
+            type: String
+        },
+        ID: {
+            type: Number
+        }
+    },
+    methods: {
+        async atualizar() {
+            const atualizar = await this.$axios.$post('http://localhost:2222/atualizar', {
+                itemLista: this.dataUpdated,
+                ID: this.ID
+            })
+            this.$nuxt.$emit("refresh")
+        }
+    }
 }
 </script>
 
 <style>
 textarea#newMeta {
+    font-weight: 500;
     font-size: 1.2rem;
     padding: 8px;
     border-radius: 4px;
@@ -56,7 +80,7 @@ div.container-atualizar {
     border-radius: 10px;
 }
 
-form>p {
+div>p {
     margin-left: 10px;
     padding: 15px 15px 0px 15px;
     font-size: 22px;

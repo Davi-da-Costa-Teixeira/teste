@@ -6,25 +6,26 @@
                         {{ i+ 1}} - {{ meta.descricao }}
                     </span></label>
                 <div class="botoes-itens">
-                    <div @click="exibir = !exibir" class="itens-container"><img src="/editar.png" alt="editar"
-                            width="22px">
+                    <div @click="exibir = !exibir; submitdata(meta.descricao); submitID(meta.ID)" class="itens-container">
+                        <img src="/edit.png" alt="editar" width="25px">
                     </div>
                     <div @click="Apagar = !Apagar; submitdata(meta.ID)" class="lixeira-container">
-                        <div class="itens-container"><img src="/lixeira.png" alt="editar" width="24px"></div>
+                        <div class="itens-container"><img src="/lixeiras.png" alt="editar" width="27px"></div>
                     </div>
                 </div>
             </div>
             <div v-if="exibir" class="atualizar">
-                <Atualizar @Cancelar="exibir = !exibir" data="k" />
+                <Atualizar :dados='transData' :ID='transID' @Cancelar="exibir = !exibir" />
             </div>
             <div v-if="Apagar" class="excluir">
-                <Excluir :dados="retirar_dados" @Cancelar="Apagar = !Apagar" />
+                <Excluir :dados="transData" @Cancelar="Apagar = !Apagar" @Excluir="Apagar = !Apagar" />
             </div>
         </div>
     </div>
-</template>
+</template>0
 
 <script>
+
 export default {
     name: 'Lista',
     emits: ['Cancelar', 'Excluir'],
@@ -33,13 +34,22 @@ export default {
             exibir: false,
             Apagar: false,
             metas: {},
-            retirar_dados: ''
+            transData: '',
+            transID: ''
         }
     },
-    methods:{
-        submitdata(ID) {
-           this.retirar_dados = ID
+    beforeMount() {
+        this.$nuxt.$on("refresh", () => {
+            this.$fetch(this.Lista);
+        })
+    },
+    methods: {
+        submitdata(dados) {
+            this.transData = dados
         },
+        submitID(ID) {
+            this.transID = ID
+        }
     },
     async fetch() {
         const descricao = await this.$axios.$get('http://localhost:2222/')
