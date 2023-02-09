@@ -7,7 +7,15 @@ const listar = async()=>{
 const adicionar = async(meta,realizado)=>{
     const adicionar = await connection.execute('insert into metas(descricao,realizado)values(?,?)',[meta,realizado])
 } 
+const deletar = async(ID)=>{
+    const apagar = await connection.execute('delete from metas where ID = ?',[ID])
+}
+const atualizar = async (desc,ID)=>{
+    const atualizar = await connection.execute('update metas set descricao = ? where ID = ?', [desc,ID])
+}
 module.exports = {
     listar,
-    adicionar
+    adicionar,
+    deletar,
+    atualizar
 }

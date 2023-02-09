@@ -8,8 +8,15 @@ const mostrar = async(req,res)=>{
 const adicionar = async(meta)=>{
     const inserir = await crud.adicionar(meta,'nao')
 }
-
+const deletar = async(ID)=>{
+    const deletar = await crud.deletar(ID)
+}
+const atualizar =  async(metas,ID)=>{
+    const atualizar = await crud.atualizar(metas,ID)
+}
 module.exports = {
     mostrar,
-    adicionar
+    adicionar,
+    deletar,
+    atualizar
 }
